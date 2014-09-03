@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.xml.internal.ws.util.StringUtils;
-
 import azeroth.util.PageBean;
 
 public class AgencyServlet extends HttpServlet{
@@ -24,8 +22,13 @@ public class AgencyServlet extends HttpServlet{
 		map.put("orgId", orgId);
 		map.put("orgName",orgName);
 		AgencyBo bo = new AgencyBo();
-		bo.addOrg(map);
-		msg = "添加成功！";
+		try {
+			bo.addOrg(map);
+			msg = "添加成功！";
+		} catch (Exception e) {
+			e.printStackTrace();
+			msg = "系统异常！添加失败！";
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(PageBean.AGENCY_HEAD);
 		request.setAttribute("msg", msg);
 		dispatcher.forward(request, response);

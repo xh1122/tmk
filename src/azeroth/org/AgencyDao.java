@@ -10,7 +10,7 @@ import azeroth.util.Util;
 
 public class AgencyDao {
 
-	public static void  addOrg(HashMap map)  {
+	public static void  addOrg(HashMap map) throws Exception  {
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		String sql = " insert into t_agency (agency_id,agency_name) values(?,?) ";
@@ -22,6 +22,7 @@ public class AgencyDao {
 			pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new Exception();
 		}finally{
 			try {
 				conn.close();
