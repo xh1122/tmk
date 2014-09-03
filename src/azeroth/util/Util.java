@@ -1,10 +1,9 @@
-package azeroth;
+package azeroth.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
-public class Utils {
+public class Util {
 
 	public static Connection getConnection() throws Exception{
 		Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
